@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const productController = require('../../controllers/productController');
 const productService = require('../../services/productService');
 
-describe("Busca todos os produtos no banco de dados", () => {
+describe("ProductController: Busca todos os produtos no banco de dados", () => {
   describe("quando nao existe nenhum produto", () => {
     const response = {};
     const request = {};
@@ -34,6 +34,7 @@ describe("Busca todos os produtos no banco de dados", () => {
   describe("quando existem produtos", () => {
     const response = {};
     const request = {};
+    const stubProduct = [{ id: 1, name: "Teclado do Rodrigo" }];
 
     before(() => {
       response.status = sinon.stub().returns(response);
@@ -52,17 +53,9 @@ describe("Busca todos os produtos no banco de dados", () => {
       await productController.getAllProducts(request, response);
       expect(response.status.calledWith(200)).to.be.equal(true);
     });
-    it("o array nao esteja vazio", async () => {
-      const result = await productController.getAllProducts(request, response);
-      expect(result).to.not.empty;
-    });
-    it("array possua itens do tipo objeto", async () => {
-      const result = await productController.getAllProducts(request, response);
-      expect(result[0]).to.be.an('object');
-    });
-    it('que os objetos tenham as propriedades: "id", "name"', async () => {
-      const result = await productController.getAllProducts(request, response);
-      expect(result[0]).to.includes.all.keys('id', 'name');
+    it("retorna array com os produtos", async () => {
+      await productController.getAllProducts(request, response);
+      expect(response.json.calledWith(stubProduct)).to.be.equal(true);
     });
   });
 });
