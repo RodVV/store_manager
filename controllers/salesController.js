@@ -1,15 +1,12 @@
 const salesService = require('../services/salesService');
 
 const ERROR_500 = 'Server Error';
-const ERROR_404 = 'Product not found';
+// const ERROR_400 = 'Error';
 
 const addSale = async (req, res) => { 
   try {
-    const sale = req.body;
-    const newSale = await salesService.addSale(sale);
-    if (!newSale) {
-      return res.status(404).json({ message: ERROR_404 });
-    }
+    const itemsSold = req.body;
+    const newSale = await salesService.addSale(itemsSold);
     return res.status(201).json(newSale);
   } catch (error) {
     console.log(error);

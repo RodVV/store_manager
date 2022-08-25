@@ -1,5 +1,5 @@
 const salesModel = require('../models/salesModel');
 
-const addSale = async (sale) => salesModel.addSale(sale);
+const addSale = async (itemsSold) => salesModel.addSale(itemsSold);
 
 module.exports = { addSale };
