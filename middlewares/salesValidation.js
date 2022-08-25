@@ -1,3 +1,5 @@
+const salesService = require('../services/salesService');
+
 const saleValidation = (req, res, next) => {
   const newSale = req.body;
 
@@ -18,5 +20,14 @@ const saleValidation = (req, res, next) => {
       next();
   }
 };
+
+// const getSaleByIdValidation = async (req, res, next) => {
+//   const { id } = req.params;
+//   const result = await salesService.getSalesById(id);
+//   if (!result) {
+//     return res.status(404).json({ message: 'Sale not found' });
+//   }
+//   next();
+// };
 
 module.exports = { saleValidation };

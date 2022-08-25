@@ -3,7 +3,7 @@ const connection = require('./connection');
 const getAllProducts = async () => {
   const [result] = await connection.execute('SELECT * FROM StoreManager.products;');
   if (result === null) return null;
-  console.log(result);
+  // console.log(result);
   return result;
 };
 
