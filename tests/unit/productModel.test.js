@@ -29,6 +29,9 @@ describe("ProductModel: Busca todos os produtos no banco de dados", () => {
       const resultadoExecute = [[{ id: 1, name: "Teclado do Rodrigo" }], []];
       sinon.stub(connection, "execute").resolves(resultadoExecute);
     });
+    after(() => {
+      connection.execute.restore();
+    });
     it("retorne um array", async () => {
       const resultado = await productModel.getAllProducts();
       expect(resultado).to.be.an("array"); 
