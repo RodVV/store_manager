@@ -12,4 +12,17 @@ const updateProduct = async ({ name, id }) => {
   return true;
 };
 
-module.exports = { getAllProducts, getProductById, addProduct, updateProduct };
+const eraseProduct = async (id) => {
+  const products = await productModel.getProductById(id);
+  if (!products) return null;
+  await productModel.eraseProduct(id);
+  return { ...products };
+};
+
+module.exports = {
+  getAllProducts,
+  getProductById,
+  addProduct,
+  updateProduct,
+  eraseProduct,
+};
