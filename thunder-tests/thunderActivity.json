@@ -65,13 +65,18 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3002/products",
-    "url": "http://localhost:3002/sales/2",
-    "method": "GET",
+    "url": "http://localhost:3002/products/1",
+    "method": "PUT",
     "sortNum": 0,
     "created": "2022-08-25T02:53:14.856Z",
-    "modified": "2022-08-25T07:29:29.417Z",
+    "modified": "2022-08-25T08:51:49.406Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"id\": 1,\n  \"name\": \"Martelo da Thora\"\n}",
+      "form": []
+    },
     "tests": []
   }
 ]
